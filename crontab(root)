@@ -1,0 +1,14 @@
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+45 * * * * sudo /home/pi/watchdog.py > /dev/null
+52 * * * * /home/pi/checkfile.py > /dev/null
+00 2 * * * sudo reboot now
+15 2 * * * /usr/bin/python /home/pi/startup_mailer.py > /dev/null
